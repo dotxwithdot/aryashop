@@ -1,5 +1,6 @@
 import { PackageCheck, ShieldCheck, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
+import { whatsappLink } from "../utils/product.js";
 
 export default function Footer() {
   return (
@@ -20,7 +21,7 @@ export default function Footer() {
           <div className="mt-4 grid gap-3 text-sm text-stone-600">
             <Link className="hover:text-rosewood" to="/">Home</Link>
             <Link className="hover:text-rosewood" to="/products">Products</Link>
-            <Link className="hover:text-rosewood" to="/about">About</Link>
+            <a className="font-semibold text-[#128C7E] hover:text-[#075E54]" href={whatsappLink("Hi AryaShop, I want to ask about your products.")}>Ask on WhatsApp</a>
             <Link className="hover:text-rosewood" to="/contact">Contact</Link>
           </div>
         </div>

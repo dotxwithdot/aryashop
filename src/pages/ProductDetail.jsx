@@ -153,19 +153,19 @@ export default function ProductDetail() {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
-              href={productInquiryLink(product.name, product.id)}
+              href={productInquiryLink(product.name, product.id, product.price)}
               aria-disabled={!product.in_stock}
               onClick={(event) => {
                 if (!product.in_stock) event.preventDefault();
               }}
               className={`focus-ring inline-flex h-12 items-center justify-center gap-2 border px-6 text-sm font-semibold transition ${
                 product.in_stock
-                  ? "rounded-full border-transparent bg-gradient-to-r from-[#d92945] to-[#ff8a00] text-white shadow-[0_16px_32px_rgba(217,41,69,0.24)] hover:-translate-y-0.5"
+                  ? "rounded-full border-transparent bg-[#25D366] text-white shadow-[0_16px_32px_rgba(37,211,102,0.24)] hover:-translate-y-0.5 hover:bg-[#1ebe5d]"
                   : "cursor-not-allowed border-stone-200 bg-stone-100 text-stone-400"
               }`}
             >
               <MessageCircle size={18} />
-              Ask about this item
+              Ask on WhatsApp
             </a>
           </div>
         </div>

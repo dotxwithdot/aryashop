@@ -41,10 +41,10 @@ export default function ProductCard({ product, animate = false, offerLabel }) {
           <span className="rounded-full bg-[#fff1f2] px-2 py-0.5 text-sm font-semibold text-[#fb7185] line-through">{formatPrice(product.originalPrice)}</span>
         </div>
         <a
-          href={productInquiryLink(product.name, product.id)}
+          href={productInquiryLink(product.name, product.id, product.price)}
           className={`flex items-center justify-center w-full h-11 gap-2 mt-auto rounded-full text-sm font-bold transition border focus-ring ${
             product.in_stock
-              ? "border-transparent bg-gradient-to-r from-[#d92945] to-[#ff8a00] text-white shadow-[0_14px_28px_rgba(217,41,69,0.24)] hover:-translate-y-0.5 hover:shadow-[0_18px_34px_rgba(217,41,69,0.32)]"
+              ? "border-transparent bg-[#25D366] text-white shadow-[0_14px_28px_rgba(37,211,102,0.24)] hover:-translate-y-0.5 hover:bg-[#1ebe5d] hover:shadow-[0_18px_34px_rgba(37,211,102,0.32)]"
               : "cursor-not-allowed border-stone-200 bg-stone-100 text-stone-400"
           }`}
           aria-disabled={!product.in_stock}
@@ -53,7 +53,7 @@ export default function ProductCard({ product, animate = false, offerLabel }) {
           }}
         >
           <MessageCircle size={17} />
-          {product.in_stock ? "Ask about item" : "Out of stock"}
+          {product.in_stock ? "Ask on WhatsApp" : "Out of stock"}
         </a>
       </div>
     </article>

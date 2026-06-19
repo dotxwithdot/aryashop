@@ -1,11 +1,12 @@
 import { Menu, ShoppingBag, X } from "lucide-react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { whatsappLink } from "../utils/product.js";
 
 const navItems = [
   { label: "Home", path: "/" },
   { label: "Products", path: "/products" },
-  { label: "About", path: "/about" },
+  { label: "Ask on WhatsApp", path: whatsappLink("Hi AryaShop, I want to ask about your products."), external: true },
   { label: "Contact", path: "/contact" },
 ];
 
@@ -24,17 +25,27 @@ export default function Header() {
 
         <nav className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              className={({ isActive }) =>
-                `focus-ring rounded-sm text-sm font-medium transition hover:text-rosewood ${
-                  isActive ? "text-rosewood" : "text-stone-700"
-                }`
-              }
-            >
-              {item.label}
-            </NavLink>
+            item.external ? (
+              <a
+                key={item.path}
+                href={item.path}
+                className="focus-ring rounded-full bg-[#25D366] px-4 py-2 text-sm font-bold text-white shadow-[0_12px_24px_rgba(37,211,102,0.20)] transition hover:bg-[#1ebe5d]"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className={({ isActive }) =>
+                  `focus-ring rounded-sm text-sm font-medium transition hover:text-rosewood ${
+                    isActive ? "text-rosewood" : "text-stone-700"
+                  }`
+                }
+              >
+                {item.label}
+              </NavLink>
+            )
           ))}
         </nav>
 
@@ -52,18 +63,29 @@ export default function Header() {
         <nav className="border-t border-amber-100 bg-white md:hidden">
           <div className="container-shell grid py-3">
             {navItems.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                onClick={() => setOpen(false)}
-                className={({ isActive }) =>
-                  `focus-ring rounded-sm px-1 py-3 text-sm font-medium ${
-                    isActive ? "text-rosewood" : "text-stone-700"
-                  }`
-                }
-              >
-                {item.label}
-              </NavLink>
+              item.external ? (
+                <a
+                  key={item.path}
+                  href={item.path}
+                  onClick={() => setOpen(false)}
+                  className="focus-ring my-2 rounded-full bg-[#25D366] px-4 py-3 text-center text-sm font-bold text-white"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setOpen(false)}
+                  className={({ isActive }) =>
+                    `focus-ring rounded-sm px-1 py-3 text-sm font-medium ${
+                      isActive ? "text-rosewood" : "text-stone-700"
+                    }`
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              )
             ))}
           </div>
         </nav>
