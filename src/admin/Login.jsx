@@ -34,16 +34,16 @@ export default function Login() {
   }
 
   return (
-    <section className="grid min-h-screen place-items-center bg-[#f8f1e8] px-4 py-12">
-      <form onSubmit={handleSubmit} className="w-full max-w-md rounded-md border border-[#ead9bd] bg-white p-7 shadow-[0_24px_70px_rgba(89,57,23,0.14)]">
+    <section className="grid min-h-screen w-full place-items-center overflow-x-hidden bg-[#f8f1e8] px-3 py-6 sm:px-4 sm:py-12">
+      <form onSubmit={handleSubmit} className="w-full max-w-md rounded-md border border-[#ead9bd] bg-white p-4 shadow-[0_24px_70px_rgba(89,57,23,0.14)] sm:p-7">
         <p className="text-xs uppercase tracking-[0.16em] text-[#9f6133]">Admin Login</p>
-        <h1 className="mt-3 text-3xl font-medium text-[#261f18]">Welcome back</h1>
+        <h1 className="mt-3 text-2xl font-medium text-[#261f18] sm:text-3xl">Welcome back</h1>
         <p className="mt-2 text-sm leading-6 text-stone-600">Server verified token access for AryaShop admin panel.</p>
 
         <label className="mt-7 grid gap-2 text-sm font-medium text-stone-700">
           Email
-          <span className="flex h-12 items-center gap-3 rounded-md border border-[#ead9bd] bg-white px-4 focus-within:ring-2 focus-within:ring-[#9f6133]">
-            <FiMail className="text-[#9f6133]" />
+          <span className="flex h-12 min-w-0 items-center gap-2 rounded-md border border-[#ead9bd] bg-white px-3 focus-within:ring-2 focus-within:ring-[#9f6133] sm:gap-3 sm:px-4">
+            <FiMail className="shrink-0 text-[#9f6133]" />
             <input
               type="email"
               required
@@ -61,8 +61,8 @@ export default function Login() {
         ].map(([field, label, Icon, placeholder]) => (
           <label key={field} className="mt-4 grid gap-2 text-sm font-medium text-stone-700">
             {label}
-            <span className="flex h-12 items-center gap-3 rounded-md border border-[#ead9bd] bg-white px-4 focus-within:ring-2 focus-within:ring-[#9f6133]">
-              <Icon className="text-[#9f6133]" />
+            <span className="flex h-12 min-w-0 items-center gap-2 rounded-md border border-[#ead9bd] bg-white px-3 focus-within:ring-2 focus-within:ring-[#9f6133] sm:gap-3 sm:px-4">
+              <Icon className="shrink-0 text-[#9f6133]" />
               <input
                 type={visibleSecrets[field] ? "text" : "password"}
                 minLength={field === "password" ? 8 : undefined}

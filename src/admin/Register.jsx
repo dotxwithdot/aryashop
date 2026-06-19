@@ -40,10 +40,10 @@ export default function Register() {
   }
 
   return (
-    <section className="grid min-h-screen place-items-center bg-[#f8f1e8] px-4 py-12">
-      <form onSubmit={handleRegister} className="w-full max-w-xl rounded-md border border-[#ead9bd] bg-white p-7 shadow-[0_24px_70px_rgba(89,57,23,0.14)]">
+    <section className="grid min-h-screen w-full place-items-center overflow-x-hidden bg-[#f8f1e8] px-3 py-6 sm:px-4 sm:py-12">
+      <form onSubmit={handleRegister} className="w-full max-w-xl rounded-md border border-[#ead9bd] bg-white p-4 shadow-[0_24px_70px_rgba(89,57,23,0.14)] sm:p-7">
         <p className="text-xs uppercase tracking-[0.16em] text-[#9f6133]">Admin Register</p>
-        <h1 className="mt-3 text-3xl font-medium text-[#261f18]">Create admin access</h1>
+        <h1 className="mt-3 text-2xl font-medium text-[#261f18] sm:text-3xl">Create admin access</h1>
         <p className="mt-2 text-sm leading-6 text-stone-600">The secret admin key is checked on the backend before access is created.</p>
 
         <div className="grid gap-4 mt-7">
@@ -55,8 +55,8 @@ export default function Register() {
           ].map(([field, label, type, Icon, placeholder]) => (
             <label key={field} className="grid gap-2 text-sm font-medium text-stone-700">
               {label}
-              <span className="flex h-12 items-center gap-3 rounded-md border border-[#ead9bd] bg-white px-4 focus-within:ring-2 focus-within:ring-[#9f6133]">
-                <Icon className="text-[#9f6133]" />
+              <span className="flex h-12 min-w-0 items-center gap-2 rounded-md border border-[#ead9bd] bg-white px-3 focus-within:ring-2 focus-within:ring-[#9f6133] sm:gap-3 sm:px-4">
+                <Icon className="shrink-0 text-[#9f6133]" />
                 <input
                   type={type === "password" && visibleSecrets[field] ? "text" : type}
                   required
