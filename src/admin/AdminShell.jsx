@@ -28,7 +28,7 @@ export default function AdminShell() {
   }
 
   const sidebar = (
-    <aside className="flex h-full w-72 flex-col border-r border-[#ead9bd] bg-[#fffaf1] px-4 py-5 shadow-[18px_0_45px_rgba(89,57,23,0.08)]">
+    <aside className="flex h-full w-[min(18rem,calc(100vw-2rem))] flex-col border-r border-[#ead9bd] bg-[#fffaf1] px-4 py-5 shadow-[18px_0_45px_rgba(89,57,23,0.08)]">
       <div className="flex items-center justify-between gap-3">
         <Link to="/admin/dashboard" onClick={() => setSidebarOpen(false)} className="focus-ring flex items-center gap-3 rounded-sm">
           <span className="grid h-11 w-11 place-items-center rounded-md bg-[#9f6133] text-xl text-white shadow-[0_14px_28px_rgba(159,97,51,0.24)]">
@@ -96,7 +96,7 @@ export default function AdminShell() {
   );
 
   return (
-    <div className="min-h-screen bg-[#f8f1e8] text-[#261f18]">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,#fff7e6_0,#f8f1e8_34%,#f6ede4_100%)] text-[#261f18]">
       <div className="fixed inset-y-0 left-0 z-40 hidden lg:block">{sidebar}</div>
 
       <div className={`fixed inset-0 z-50 lg:hidden ${sidebarOpen ? "" : "pointer-events-none"}`}>
@@ -106,7 +106,7 @@ export default function AdminShell() {
           onClick={() => setSidebarOpen(false)}
           aria-label="Close sidebar overlay"
         />
-        <div className={`relative h-full w-72 transition-transform duration-300 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>{sidebar}</div>
+        <div className={`relative h-full w-[min(18rem,calc(100vw-2rem))] transition-transform duration-300 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>{sidebar}</div>
       </div>
 
       <div className="min-h-screen lg:pl-72">
@@ -133,10 +133,29 @@ export default function AdminShell() {
           </div>
         </header>
 
-        <main className="px-4 py-6 md:px-6 lg:px-8">
+        <main className="px-4 pb-28 pt-6 md:px-6 lg:px-8 lg:pb-8">
           <Outlet />
         </main>
       </div>
+
+      <nav className="fixed inset-x-3 bottom-3 z-40 grid grid-cols-3 gap-2 rounded-2xl border border-[#ead9bd] bg-white/95 p-2 shadow-[0_18px_55px_rgba(89,57,23,0.18)] backdrop-blur lg:hidden" aria-label="Admin mobile navigation">
+        {navItems.map((item) => (
+          <NavLink
+            key={item.to}
+            to={item.to}
+            className={({ isActive }) =>
+              `focus-ring grid min-h-14 place-items-center rounded-xl px-2 py-1 text-[11px] font-medium transition ${
+                isActive
+                  ? "bg-[#9f6133] text-white shadow-[0_12px_24px_rgba(159,97,51,0.24)]"
+                  : "text-[#6d5138] hover:bg-[#fffaf1] hover:text-[#9f6133]"
+              }`
+            }
+          >
+            <item.icon className="text-lg" />
+            <span className="mt-1 max-w-full truncate">{item.label}</span>
+          </NavLink>
+        ))}
+      </nav>
     </div>
   );
 }

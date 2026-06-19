@@ -1,7 +1,7 @@
 import { MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import ProductImage from "./ProductImage.jsx";
-import { formatPrice, whatsappLink } from "../utils/whatsapp.js";
+import { formatPrice, productInquiryLink } from "../utils/product.js";
 
 export default function ProductCard({ product, animate = false, offerLabel }) {
   const discountLabel = Number(product.discountPercent || 0) > 0 ? `${product.discountPercent}% OFF` : "";
@@ -41,9 +41,7 @@ export default function ProductCard({ product, animate = false, offerLabel }) {
           <span className="rounded-full bg-[#fff1f2] px-2 py-0.5 text-sm font-semibold text-[#fb7185] line-through">{formatPrice(product.originalPrice)}</span>
         </div>
         <a
-          href={whatsappLink(product.name,product.id)}
-          target="_blank"
-          rel="noreferrer"
+          href={productInquiryLink(product.name, product.id)}
           className={`flex items-center justify-center w-full h-11 gap-2 mt-auto rounded-full text-sm font-bold transition border focus-ring ${
             product.in_stock
               ? "border-transparent bg-gradient-to-r from-[#d92945] to-[#ff8a00] text-white shadow-[0_14px_28px_rgba(217,41,69,0.24)] hover:-translate-y-0.5 hover:shadow-[0_18px_34px_rgba(217,41,69,0.32)]"
@@ -55,7 +53,7 @@ export default function ProductCard({ product, animate = false, offerLabel }) {
           }}
         >
           <MessageCircle size={17} />
-          {product.in_stock ? "Contact WhatsApp" : "Out of stock"}
+          {product.in_stock ? "Ask about item" : "Out of stock"}
         </a>
       </div>
     </article>

@@ -1,4 +1,4 @@
-import { Clock, MapPin, PackageCheck, Phone, ShieldCheck } from "lucide-react";
+import { PackageCheck, ShieldCheck, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
@@ -29,16 +29,16 @@ export default function Footer() {
           <div className="mt-4 grid gap-3 text-sm text-stone-600">
             <span>Indian Kurties</span>
             <span>Earrings</span>
-            <span>Handbags</span>
+            <span>Weekly Offers</span>
             <span>Beauty Gift Sets</span>
           </div>
         </div>
         <div>
-          <h3 className="font-semibold">Contact Info</h3>
+          <h3 className="font-semibold">Shopping Care</h3>
           <div className="mt-4 grid gap-3 text-sm text-stone-600">
-            <span className="flex items-center gap-2"><MapPin size={17} /> AryaShop Studio, Jaipur, Rajasthan</span>
-            <span className="flex items-center gap-2"><Phone size={17} /> +91 98765 43210</span>
-            <span className="flex items-center gap-2"><Clock size={17} /> Mon-Sat, 10:00 AM - 7:00 PM</span>
+            <span className="flex items-center gap-2"><Sparkles size={17} /> Fresh styles for every week</span>
+            <span className="flex items-center gap-2"><ShieldCheck size={17} /> Clear product details</span>
+            <span className="flex items-center gap-2"><PackageCheck size={17} /> Neat order preparation</span>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import ProductSlider from "../components/ProductSlider.jsx";
 import AryaLoader from "../components/AryaLoader.jsx";
 import { api, normalizeProduct } from "../services/api.js";
 import useGsapReveal from "../hooks/useGsapReveal.js";
-import { formatPrice, whatsappLink } from "../utils/whatsapp.js";
+import { formatPrice, productInquiryLink } from "../utils/product.js";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -115,9 +115,9 @@ export default function ProductDetail() {
             {[
               { icon: Truck, title: "Fast delivery", text: "Delivery in 5-7 days" },
               { icon: ShieldCheck, title: "Checked quality", text: "Packed after quick quality check" },
-              { icon: RotateCcw, title: "Easy support", text: "WhatsApp help before ordering" },
+              { icon: RotateCcw, title: "Easy support", text: "Product help before ordering" },
               { icon: Gift, title: "Ready to gift", text: "Neat packaging for every order" },
-              { icon: Clock, title: "Quick response", text: "Fast product details on chat" },
+              { icon: Clock, title: "Quick response", text: "Fast product details when needed" },
               { icon: Sparkles, title: "Fresh styles", text: "New picks added by AryaShop" },
             ].map((item) => (
               <div key={item.title} className="flex gap-3 rounded-2xl bg-white/80 p-3 shadow-[0_10px_24px_rgba(126,88,24,0.06)]">
@@ -153,9 +153,7 @@ export default function ProductDetail() {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
-              href={whatsappLink(product.name, product.id)}
-              target="_blank"
-              rel="noreferrer"
+              href={productInquiryLink(product.name, product.id)}
               aria-disabled={!product.in_stock}
               onClick={(event) => {
                 if (!product.in_stock) event.preventDefault();
@@ -167,7 +165,7 @@ export default function ProductDetail() {
               }`}
             >
               <MessageCircle size={18} />
-              Ask on WhatsApp
+              Ask about this item
             </a>
           </div>
         </div>

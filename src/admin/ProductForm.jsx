@@ -18,7 +18,7 @@ const emptyForm = {
   material: "",
   rating: 4.5,
   reviews: 0,
-  reviewSummary: "Customers love the comfort, styling, and easy WhatsApp support from AryaShop.",
+  reviewSummary: "Customers love the comfort, styling, and easy product support from AryaShop.",
   stock: 0,
   in_stock: true,
   isFeatured: false,
@@ -27,6 +27,10 @@ const emptyForm = {
 
 function revokePreviewUrl(url) {
   if (url?.startsWith("blob:")) URL.revokeObjectURL(url);
+}
+
+function previewForFile(file) {
+  return file?.type?.startsWith("image/") ? URL.createObjectURL(file) : "";
 }
 
 function productFormData(form) {
@@ -50,7 +54,7 @@ function productFormData(form) {
   data.append("in_stock", String(Boolean(form.in_stock)));
   data.append("isFeatured", String(Boolean(form.isFeatured)));
   data.append("isActive", String(Boolean(form.isActive)));
-  data.append("highlights", JSON.stringify([form.material, "Easy WhatsApp inquiry", "Admin managed product"].filter(Boolean)));
+  data.append("highlights", JSON.stringify([form.material, "Easy product inquiry", "Admin managed product"].filter(Boolean)));
   data.append("longDescription", form.shortDescription);
   if (form.imageFile) data.append("images", form.imageFile);
   return data;
@@ -128,7 +132,7 @@ export default function ProductForm() {
     setForm((current) => ({
       ...current,
       imageFile: file || null,
-      imagePreview: file ? URL.createObjectURL(file) : current.imagePreview,
+      imagePreview: file ? previewForFile(file) : current.imagePreview,
     }));
   }
 
@@ -201,7 +205,7 @@ export default function ProductForm() {
             <span className="grid h-20 w-16 place-items-center overflow-hidden rounded-md border border-[#ead9bd] bg-white">
               {form.imagePreview ? <img src={form.imagePreview} alt="" className="h-full w-full object-cover" /> : <FiImage className="text-xl text-[#9f6133]" />}
             </span>
-            <input type="file" accept="image/*" required={!isEditing} onChange={(event) => updateImage(event.target.files?.[0])} className="block w-full text-sm text-stone-600 file:mr-4 file:rounded-md file:border-0 file:bg-[#9f6133] file:px-4 file:py-2 file:text-sm file:font-medium file:text-white" />
+            <input type="file" required={!isEditing} onChange={(event) => updateImage(event.target.files?.[0])} className="block w-full text-sm text-stone-600 file:mr-4 file:rounded-md file:border-0 file:bg-[#9f6133] file:px-4 file:py-2 file:text-sm file:font-medium file:text-white" />
           </span>
         </label>
         <label className="grid gap-2 text-sm font-medium text-stone-700">

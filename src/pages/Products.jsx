@@ -6,7 +6,7 @@ import AryaLoader from "../components/AryaLoader.jsx";
 import { api, normalizeProduct } from "../services/api.js";
 import useDebouncedValue from "../hooks/useDebouncedValue.js";
 import useGsapReveal from "../hooks/useGsapReveal.js";
-import { formatPrice } from "../utils/whatsapp.js";
+import { formatPrice } from "../utils/product.js";
 
 const PAGE_SIZE = 12;
 
@@ -60,7 +60,7 @@ export default function Products() {
   const highestPrice = meta.highestPrice || Number(maxPrice) || 0;
   const pageCount = meta.pages || 1;
   const currentPage = meta.page || page;
-  const activeOfferLabel = dealFilter === "299" ? "Everything at Rs.299" : promoFilter ? `${promoFilter}% OFF` : "";
+  const activeOfferLabel = dealFilter === "499" ? "Under Rs.499" : promoFilter ? `${promoFilter}% OFF` : "";
 
   function updatePrice(value) {
     setMaxPrice(Number(value));
@@ -81,14 +81,14 @@ export default function Products() {
     <section ref={scope} className="container-shell py-12">
       <div data-animate>
         <SectionHeading
-          eyebrow={dealFilter === "299" ? "Today's Offer" : categoryFilter ? "Offer Collection" : "Products"}
-          title={dealFilter === "299" ? "Everything at Rs.299" : categoryFilter ? categoryFilter : "Explore AryaShop Collection"}
+          eyebrow={dealFilter === "499" ? "This Week Offer" : categoryFilter ? "Offer Collection" : "Products"}
+          title={dealFilter === "499" ? "Under Rs.499" : categoryFilter ? categoryFilter : "Explore AryaShop Collection"}
           text={
-            dealFilter === "299"
-              ? "Only products priced exactly at Rs.299 are shown here."
+            dealFilter === "499"
+              ? "Only products priced at Rs.499 or less are shown here."
               : promoFilter
                 ? `Selected ${categoryFilter?.toLowerCase()} products with ${promoFilter}% off offer labels.`
-                : "Browse AryaShop products loaded from the live catalog. Contact on WhatsApp for product questions."
+                : "Browse AryaShop products loaded from the live catalog and explore product details before ordering."
           }
         />
       </div>

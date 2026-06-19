@@ -4,7 +4,7 @@ import ProductImage from "../components/ProductImage.jsx";
 import SectionHeading from "../components/SectionHeading.jsx";
 import { products } from "../data/products.js";
 import useGsapReveal from "../hooks/useGsapReveal.js";
-import { formatPrice } from "../utils/whatsapp.js";
+import { formatPrice } from "../utils/product.js";
 
 const PAGE_SIZE = 10;
 

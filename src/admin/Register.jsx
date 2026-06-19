@@ -49,7 +49,7 @@ export default function Register() {
         <div className="grid gap-4 mt-7">
           {[
             ["name", "Name", "text", FiUser, "Your name"],
-            ["gmail", "Email", "email", FiMail, "admin@example.com"],
+            ["gmail", "Email", "email", FiMail, "Enter admin email"],
             ["password", "Password", "password", FiLock, "Minimum 8 characters"],
             ["secretAdminKey", "Secret admin key", "password", FiKey, "Key from .env"],
           ].map(([field, label, type, Icon, placeholder]) => (

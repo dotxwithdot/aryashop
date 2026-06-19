@@ -50,7 +50,7 @@ export default function Login() {
               value={form.gmail}
               onChange={(event) => setForm({ ...form, gmail: event.target.value })}
               className="h-full min-w-0 flex-1 bg-transparent text-sm outline-none"
-              placeholder="admin@example.com"
+              placeholder="Enter admin email"
             />
           </span>
         </label>

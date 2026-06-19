@@ -7,7 +7,7 @@ import ProductImage from "../components/ProductImage.jsx";
 import { TableSkeleton } from "../components/Skeleton.jsx";
 import { api, normalizeProduct } from "../services/api.js";
 import { confirmAction } from "../utils/confirmDialog.js";
-import { formatPrice } from "../utils/whatsapp.js";
+import { formatPrice } from "../utils/product.js";
 import useDebouncedValue from "../hooks/useDebouncedValue.js";
 
 export default function ProductsAdmin() {

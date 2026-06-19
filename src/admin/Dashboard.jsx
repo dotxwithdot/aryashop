@@ -6,7 +6,7 @@ import AryaLoader from "../components/AryaLoader.jsx";
 import ProductImage from "../components/ProductImage.jsx";
 import { SkeletonBlock, TableSkeleton } from "../components/Skeleton.jsx";
 import { api, normalizeProduct } from "../services/api.js";
-import { formatPrice } from "../utils/whatsapp.js";
+import { formatPrice } from "../utils/product.js";
 
 const cards = [
   ["products", "Products", FiTag],

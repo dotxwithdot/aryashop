@@ -11,6 +11,10 @@ function revokePreviewUrl(url) {
   if (url?.startsWith("blob:")) URL.revokeObjectURL(url);
 }
 
+function previewForFile(file) {
+  return file?.type?.startsWith("image/") ? URL.createObjectURL(file) : "";
+}
+
 function categoryFormData(form) {
   const data = new FormData();
   data.append("name", form.name);
@@ -58,7 +62,7 @@ export default function CategoryForm() {
     setForm((current) => ({
       ...current,
       imageFile: file || null,
-      imagePreview: file ? URL.createObjectURL(file) : current.imagePreview,
+      imagePreview: file ? previewForFile(file) : current.imagePreview,
     }));
   }
 
@@ -103,7 +107,7 @@ export default function CategoryForm() {
             <span className="grid h-24 w-20 place-items-center overflow-hidden rounded-md border border-[#ead9bd] bg-white">
               {form.imagePreview ? <img src={form.imagePreview} alt="" className="h-full w-full object-cover" /> : <FiImage className="text-xl text-[#9f6133]" />}
             </span>
-            <input type="file" accept="image/*" required={!isEditing} onChange={(event) => updateImage(event.target.files?.[0])} className="block w-full text-sm text-stone-600 file:mr-4 file:rounded-md file:border-0 file:bg-[#9f6133] file:px-4 file:py-2 file:text-sm file:font-medium file:text-white" />
+            <input type="file" required={!isEditing} onChange={(event) => updateImage(event.target.files?.[0])} className="block w-full text-sm text-stone-600 file:mr-4 file:rounded-md file:border-0 file:bg-[#9f6133] file:px-4 file:py-2 file:text-sm file:font-medium file:text-white" />
           </span>
         </label>
 
