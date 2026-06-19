@@ -14,7 +14,7 @@ export default function Register() {
   const [visibleSecrets, setVisibleSecrets] = useState({ password: false, secretAdminKey: false });
   const [loading, setLoading] = useState(false);
 
-  if (isAuthenticated) return <Navigate to="/admin/dashboard" replace />;
+  if (isAuthenticated) return <Navigate to="/admin/login" replace />;
 
   function update(field, value) {
     setForm((current) => ({ ...current, [field]: value }));
@@ -45,7 +45,7 @@ export default function Register() {
         <h1 className="mt-3 text-3xl font-medium text-[#261f18]">Create admin access</h1>
         <p className="mt-2 text-sm leading-6 text-stone-600">The secret admin key is checked on the backend before access is created.</p>
 
-        <div className="mt-7 grid gap-4">
+        <div className="grid gap-4 mt-7">
           {[
             ["name", "Name", "text", FiUser, "Your name"],
             ["gmail", "Email", "email", FiMail, "admin@example.com"],
@@ -62,7 +62,7 @@ export default function Register() {
                   minLength={field === "password" ? 8 : undefined}
                   value={form[field]}
                   onChange={(event) => update(field, event.target.value)}
-                  className="h-full min-w-0 flex-1 bg-transparent text-sm outline-none"
+                  className="flex-1 h-full min-w-0 text-sm bg-transparent outline-none"
                   placeholder={placeholder}
                 />
                 {type === "password" && (
@@ -89,7 +89,7 @@ export default function Register() {
           {loading ? <AryaLoader compact label="Creating" /> : "Create admin"}
         </button>
 
-        <p className="mt-5 text-center text-sm text-stone-600">
+        <p className="mt-5 text-sm text-center text-stone-600">
           Already have access?{" "}
           <Link to="/admin/login" className="font-medium text-[#9f6133]">
             Login
