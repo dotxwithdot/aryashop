@@ -1,6 +1,6 @@
 import { FiEye, FiEyeOff, FiKey, FiLock, FiMail, FiUser } from "react-icons/fi";
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../services/api.js";
 import AryaLoader from "../components/AryaLoader.jsx";
@@ -9,7 +9,8 @@ import { useAuth } from "./AuthContext.jsx";
 const emptyForm = { name: "", gmail: "", password: "", secretAdminKey: "" };
 
 export default function Register() {
-  const { completeLogin, isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const [form, setForm] = useState(emptyForm);
   const [visibleSecrets, setVisibleSecrets] = useState({ password: false, secretAdminKey: false });
   const [loading, setLoading] = useState(false);
@@ -29,8 +30,8 @@ export default function Register() {
     setLoading(true);
     try {
       const response = await api.auth.register(form);
-      completeLogin(response.data.user, response.data.token);
       toast.success(response.message);
+      navigate("/admin/login", { replace: true, state: { email: form.gmail } });
     } catch (error) {
       toast.error(error.message);
     } finally {

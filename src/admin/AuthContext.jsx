@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { api, clearToken, getToken, setToken } from "../services/api.js";
+import { api } from "../services/api.js";
 
 const AuthContext = createContext(null);
 
@@ -15,7 +15,6 @@ export function AuthProvider({ children }) {
         const response = await api.auth.me();
         if (active) setAdmin(response.data.user);
       } catch (_error) {
-        if (getToken()) clearToken();
         if (active) setAdmin(null);
       } finally {
         if (active) setLoading(false);
@@ -35,19 +34,13 @@ export function AuthProvider({ children }) {
       isAuthenticated: Boolean(admin),
       async login(body) {
         const response = await api.auth.login(body);
-        setToken(response.data.token);
         setAdmin(response.data.user);
         return response;
-      },
-      completeLogin(user, token) {
-        setToken(token);
-        setAdmin(user);
       },
       async logout() {
         try {
           await api.auth.logout();
         } finally {
-          clearToken();
           setAdmin(null);
         }
       },

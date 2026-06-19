@@ -9,7 +9,7 @@ export default function Login() {
   const { isAuthenticated, login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const [form, setForm] = useState({ gmail: "", password: "", secretAdminKey: "" });
+  const [form, setForm] = useState({ gmail: location.state?.email || "", password: "", secretAdminKey: "" });
   const [visibleSecrets, setVisibleSecrets] = useState({ password: false, secretAdminKey: false });
   const [loading, setLoading] = useState(false);
 
