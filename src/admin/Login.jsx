@@ -6,13 +6,14 @@ import AryaLoader from "../components/AryaLoader.jsx";
 import { useAuth } from "./AuthContext.jsx";
 
 export default function Login() {
-  const { isAuthenticated, login } = useAuth();
+  const { isAuthenticated, loading: sessionLoading, login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [form, setForm] = useState({ gmail: location.state?.email || "", password: "", secretAdminKey: "" });
   const [visibleSecrets, setVisibleSecrets] = useState({ password: false, secretAdminKey: false });
   const [loading, setLoading] = useState(false);
 
+  if (sessionLoading) return <AryaLoader fullScreen label="Checking admin session" />;
   if (isAuthenticated) return <Navigate to="/admin/dashboard" replace />;
 
   async function handleSubmit(event) {
