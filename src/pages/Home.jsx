@@ -9,11 +9,11 @@ const fallbackImage = "https://placehold.co/900x1125/fff8e8/8a641f.png?text=Arya
 
 const offerSections = [
   {
-    title: "Buy 3 Get 1 Free",
+    title: "Buy 2 Get 1 Free",
     subtitle: "This Week Offer",
     badge: "Under Rs.499",
     text: "Pick stylish weekly offer finds and unlock one extra piece with your set.",
-    to: "/products?category=offer",
+    to: "/products",
     image:
     first_section,
     fallback: fallbackImage,
@@ -25,7 +25,7 @@ const offerSections = [
     subtitle: "Kurti Collection",
     badge: "50% OFF",
     text: "Fresh ethnic styles for everyday and festive dressing.",
-    to: "/products?category=kurti",
+    to: "/products",
     image:
     kurti,
     fallback: fallbackImage,
