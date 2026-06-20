@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL || "/api";
+const API_URL = import.meta.env.PROD ? "/api" : import.meta.env.VITE_API_URL || "/api";
 
 export function buildImageFallback(product, variant = "Product") {
   const categoryName = typeof product.category === "string" ? product.category : product.category?.name || "Product";
