@@ -29,7 +29,7 @@ export default function ProductCard({ product, animate = false, offerLabel }) {
               {product.name}
             </Link>
           </div>
-          <div className="flex shrink-0 flex-col items-end gap-1">
+          <div className="flex flex-col items-end gap-1 shrink-0">
             <span className={`rounded-full px-2.5 py-1 text-[11px] font-bold ${product.in_stock ? "bg-sage text-stone-700" : "bg-[#fee2e2] text-[#b91c1c]"}`}>
               {product.in_stock ? "In stock" : "Not in stock"}
             </span>
@@ -53,7 +53,7 @@ export default function ProductCard({ product, animate = false, offerLabel }) {
           }}
         >
           <MessageCircle size={17} />
-          {product.in_stock ? "Ask on WhatsApp" : "Out of stock"}
+          {product.in_stock ? "Order Now" : "Out of stock"}
         </a>
       </div>
     </article>
